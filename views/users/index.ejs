@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+    <title>
+        <%=title%> --Nicee
+    </title>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary navbar-expang-ls">
+        <div class="container">
+            <a href="/" class="navbar-brand">BlogApp</a>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="/blogs" class="nav-link">Blog Listesi</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-3">
+                <%- include('../partials/category-menu') %>
+            </div>
+            <div class="col-md-9">
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="/static/images/1.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Komple uygulamalı Web geliştirme
+                                </h5>
+                                <p class="card-text">Sıfırdan geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="/static/images/1.jpg" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Pyton
+                                </h5>
+                                <p class="card-text">Sıfırdan geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% blogs.forEach(element=> { %>
+                    <% if(element.anasayfa){ %>
+                        <div class="card mb-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src=/static/images/<%=element.resim%> class="img-fluid" alt="">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%=element.baslik%>
+                                        </h5>
+                                        <p class="card-text">
+                                            <%=element.aciklama%>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }}) %>
+
+                            <% if (blogs.filter(b=> b.anasayfa).length>0) { %>
+                                Sonraki sayfaya geç
+                                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
